@@ -1,12 +1,11 @@
 
 import 'package:flutter/material.dart';
 import 'package:sample_latest/mixins/cards_mixin.dart';
-import 'package:sample_latest/mixins/helper_widgets_mixin.dart';
 import 'package:sample_latest/utils/device_configurations.dart';
 import 'package:sample_latest/widgets/custom_app_bar.dart';
 
 class ScrollTypes extends StatelessWidget with CardWidgetsMixin {
-  const ScrollTypes({Key? key}) : super(key: key);
+  const ScrollTypes({super.key});
 
   final List<({String name, String link})> animationList = const [
   (name: 'Scroll Bar', link : ''),
