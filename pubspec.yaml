@@ -69,6 +69,7 @@ dependencies:
   firebase_messaging: ^14.8.1
   flutter_local_notifications: ^17.0.0
   meta: ^1.11.0
+  json_annotation: ^4.8.1
 #  intl : any
 
 dev_dependencies:
