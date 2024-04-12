@@ -17,25 +17,21 @@ class _LifeCycleWidget1State extends State<LifeCycleWidget1> {
 
   @override
   void didChangeDependencies() {
-    // TODO: implement didChangeDependencies
     super.didChangeDependencies();
   }
 
   @override
   void didUpdateWidget(covariant LifeCycleWidget1 oldWidget) {
-    // TODO: implement didUpdateWidget
     super.didUpdateWidget(oldWidget);
   }
 
   @override
   void deactivate() {
-    // TODO: implement deactivate
     super.deactivate();
   }
 
   @override
   void dispose() {
-    // TODO: implement dispose
     super.dispose();
   }
 
@@ -146,7 +142,7 @@ class _LifeCycleChildWidgetState extends State<LifeCycleChildWidget>
 
   @override
   void didUpdateWidget(covariant LifeCycleChildWidget oldWidget) {
-    var a = List.generate(1000000, (index) => 1000000 / 2).toList();
+    List<double> a = List.generate(1000000, (index) => 1000000 / 2).toList();
 
     /// this line of code creates junk
     super.didUpdateWidget(oldWidget);

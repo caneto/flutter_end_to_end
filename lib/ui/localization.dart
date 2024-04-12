@@ -8,7 +8,7 @@ import 'package:sample_latest/utils/device_configurations.dart';
 import 'package:sample_latest/widgets/custom_app_bar.dart';
 
 class LocalizationDatePicker extends StatefulWidget {
-  const LocalizationDatePicker({Key? key}) : super(key: key);
+  const LocalizationDatePicker({super.key});
 
   @override
   State<LocalizationDatePicker> createState() => _LocalizationDatePickerState();
@@ -34,7 +34,7 @@ class _LocalizationDatePickerState extends State<LocalizationDatePicker>
                 crossAxisAlignment: WrapCrossAlignment.center,
                 spacing: 5,
                 children: [
-                  Text('${AppLocalizations.of(context)!.selectLanguage}',
+                  Text(AppLocalizations.of(context)!.selectLanguage,
                       style: Theme.of(context)
                           .textTheme
                           .titleSmall
@@ -53,7 +53,7 @@ class _LocalizationDatePickerState extends State<LocalizationDatePicker>
               buildLabel(AppLocalizations.of(context)!.simplifiedStrings),
               _buildSimplifiedStrings(),
               _buildMaterialOrCupertinoComponents(),
-              Divider(),
+              const Divider(),
               _buildLanguageOverride()
             ],
           ).screenPadding(),
@@ -132,15 +132,15 @@ class _LocalizationDatePickerState extends State<LocalizationDatePicker>
   }
 
   Widget _buildSimplifiedStrings() {
-    var size = MediaQuery.of(context).size;
+    //var size = MediaQuery.of(context).size;
     var list = getLocalizationData();
     return LayoutBuilder(builder: (context, constraints) {
       return ListView.separated(
-          physics: NeverScrollableScrollPhysics(),
+          physics: const NeverScrollableScrollPhysics(),
           shrinkWrap: true,
           itemBuilder: (context, index) => list.elementAt(index),
-          separatorBuilder: (context, index) => Padding(
-                padding: const EdgeInsets.symmetric(vertical: 8),
+          separatorBuilder: (context, index) => const Padding(
+                padding: EdgeInsets.symmetric(vertical: 8),
                 child: Divider(),
               ),
           itemCount: list.length);
