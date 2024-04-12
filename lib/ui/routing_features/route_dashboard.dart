@@ -10,7 +10,7 @@ import '../../utils/enums_type_def.dart';
 
 class RoutingDashboard extends StatelessWidget  with CardWidgetsMixin {
 
-   RoutingDashboard({Key? key}) : super(key: key);
+   RoutingDashboard({super.key});
 
   final List<(String, RouteType, IconData, {String? des})> screenTypes = [
    ('Shell Route with inner inner children', RouteType.shellRouting, Icons.route, des : "this will have one parent with inner children appbar will be same parent-child1-child2-child3"),
