@@ -1,23 +1,21 @@
 
-import 'package:sample_latest/mixins/helper_methods.dart';
 import 'package:sample_latest/services/base_service.dart';
 import 'package:sample_latest/models/school/school_details_model.dart';
 import 'package:sample_latest/models/school/school_model.dart';
 import 'package:sample_latest/models/school/student_model.dart';
 import 'package:sample_latest/services/urls.dart';
 import 'package:sample_latest/services/utils/service_enums_typedef.dart';
-import 'package:sample_latest/utils/enums_type_def.dart';
 
 abstract class SchoolRepo {
-Future<SchoolDetailsModel?> fetchSchoolDetails(String id);
-Future<List<SchoolModel>> fetchSchools();
-Future<List<StudentModel>> fetchStudents(String schoolId);
-Future<StudentModel?> fetchStudent(String studentId, String schoolId);
-Future<SchoolModel> createOrEditSchool(SchoolModel school);
-Future<SchoolDetailsModel> addOrEditSchoolDetails(SchoolDetailsModel schoolDetails);
-Future<StudentModel> createOrEditStudent(String schoolId, StudentModel student);
-Future<bool> deleteSchool(String id);
-Future<bool> deleteStudent(String studentId, String schoolId);
+  Future<SchoolDetailsModel?> fetchSchoolDetails(String id);
+  Future<List<SchoolModel>> fetchSchools();
+  Future<List<StudentModel>> fetchStudents(String schoolId);
+  Future<StudentModel?> fetchStudent(String studentId, String schoolId);
+  Future<SchoolModel> createOrEditSchool(SchoolModel school);
+  Future<SchoolDetailsModel> addOrEditSchoolDetails(SchoolDetailsModel schoolDetails);
+  Future<StudentModel> createOrEditStudent(String schoolId, StudentModel student);
+  Future<bool> deleteSchool(String id);
+  Future<bool> deleteStudent(String studentId, String schoolId);
 }
 
 class SchoolRepository with BaseService implements SchoolRepo{
@@ -114,15 +112,15 @@ class SchoolRepository with BaseService implements SchoolRepo{
 
   @override
   Future<bool> deleteSchool(String schoolId) async {
-    var schoolDelRes = await makeRequest(url: '${ Urls.schools}/$schoolId.json', method: RequestType.delete);
-    var schoolDetailsDelRes = await makeRequest(url: '${Urls.schoolDetails}/$schoolId.json', method: RequestType.delete);
-    var studentsDel = await makeRequest(url: '${Urls.students}/$schoolId.json', method: RequestType.delete);
+    await makeRequest(url: '${ Urls.schools}/$schoolId.json', method: RequestType.delete);
+    await makeRequest(url: '${Urls.schoolDetails}/$schoolId.json', method: RequestType.delete);
+    await makeRequest(url: '${Urls.students}/$schoolId.json', method: RequestType.delete);
    return true;
   }
 
   @override
   Future<bool> deleteStudent(String studentId, String schoolId) async {
-    var studentsDel = await makeRequest(url: '${Urls.students}/$schoolId/$studentId.json', method: RequestType.delete);
+    await makeRequest(url: '${Urls.students}/$schoolId/$studentId.json', method: RequestType.delete);
     return true;
   }
 
