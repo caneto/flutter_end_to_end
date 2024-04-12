@@ -1,23 +1,20 @@
+// ignore_for_file: avoid_print
+
 import 'dart:ui';
 
-import 'package:firebase_messaging/firebase_messaging.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:sample_latest/routing.dart';
 import 'package:sample_latest/services/db/offline_handler.dart';
-import 'package:sample_latest/global_variables.dart';
 import 'package:sample_latest/mixins/cards_mixin.dart';
 import 'package:sample_latest/ui/push_notifcations/push_notification_service.dart';
 import 'package:sample_latest/utils/connectivity_handler.dart';
-import 'package:sample_latest/utils/constants.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:sample_latest/utils/device_configurations.dart';
 import 'package:sample_latest/utils/enums_type_def.dart';
 import 'package:sample_latest/widgets/custom_app_bar.dart';
 
 class HomeScreen extends StatefulWidget {
-  const HomeScreen({Key? key}) : super(key: key);
+  const HomeScreen({super.key});
 
   @override
   State<HomeScreen> createState() => _HomeScreenState();
@@ -106,10 +103,10 @@ class _HomeScreenState extends State<HomeScreen> with CardWidgetsMixin {
         des: 'Firebase push notifications'
       ),
       (
-          'Deep Linking',
-          ScreenType.deepLinking,
-          Icons.notifications,
-          des: 'Test the deeplink in device'
+        'Deep Linking',
+        ScreenType.deepLinking,
+        Icons.notifications,
+        des: 'Test the deeplink in device'
       ),
       (
         'Automatci Keep alive',
@@ -186,7 +183,8 @@ class _HomeScreenState extends State<HomeScreen> with CardWidgetsMixin {
       ScreenType.plugins => '/home/plugins',
       ScreenType.scrollTypes => '/home/scrollTypes',
       ScreenType.routing => '/home/route',
-      ScreenType.pushNotifications => '/home/push-notifications/remote-notifications',
+      ScreenType.pushNotifications =>
+        '/home/push-notifications/remote-notifications',
       ScreenType.deepLinking => '/home/deep-linking',
     };
     context.go(path);
@@ -273,21 +271,20 @@ class _HomeScreenState extends State<HomeScreen> with CardWidgetsMixin {
           return Badge(
               label: Text('$count'),
               child: TextButton(
-                  onPressed: OfflineHandler().syncData, child: Text('Sync')));
+                  onPressed: OfflineHandler().syncData,
+                  child: const Text('Sync')));
         },
       ),
       content: const Align(alignment: Alignment.center, child: Text('Offline')),
-      actions: [
-        const Text('Retry',
-                style: TextStyle(
-                    fontWeight: FontWeight.w600,
-                    color: Colors.white,
-                    decoration: TextDecoration.underline,
-                    decorationColor: Colors.white)) ??
-            TextButton(
-                onPressed: () {},
-                child: const Text('Retry',
-                    style: TextStyle(fontWeight: FontWeight.w600)))
+      actions: const [
+        Text(
+          'Retry',
+          style: TextStyle(
+              fontWeight: FontWeight.w600,
+              color: Colors.white,
+              decoration: TextDecoration.underline,
+              decorationColor: Colors.white),
+        )
       ],
       contentTextStyle: const TextStyle(
           fontWeight: FontWeight.bold, fontSize: 16, color: Colors.white),
